@@ -28,10 +28,19 @@ function updateScore() {
     scoreElement.textContent = score;
 }
 
+function isDigit(char) {
+    return /^\d$/.test(char);
+}
+
 function checkInput() {
     if (!isGameRunning || answerInput.value.length === 0) return;
 
-    const isCorrect = answerInput.value === targetCharElement.textContent;
+    const targetChar = targetCharElement.textContent;
+    const inputChar = answerInput.value;
+    
+    // 숫자인 경우 값만 비교, 문자인 경우 대소문자 포함해서 비교
+    const isCorrect = isDigit(targetChar) ? inputChar === targetChar : inputChar === targetChar;
+    
     score = Math.max(0, score + (isCorrect ? 10 : -5));
     updateScore();
     answerInput.className = isCorrect ? 'correct' : 'incorrect';
