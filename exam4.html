@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="exam4.css">
+    <script src="exam4.js" defer></script>
+    <title>문자 반응 속도 게임</title>
+</head>
+<body>
+    <main class="game-shell">
+        <header class="game-header">
+            <p class="eyebrow">REACTION / 20 SEC</p>
+            <h1>문자 반응 속도</h1>
+            <p class="description">화면의 문자와 <strong>대소문자까지 똑같이</strong> 입력하세요.</p>
+        </header>
+
+        <section class="game-panel" aria-label="타이핑 게임">
+            <div class="stats" aria-live="polite">
+                <div><span>현재 점수</span><strong id="score">0</strong></div>
+                <div><span>최고 기록</span><strong id="highScore">0</strong></div>
+                <div><span>남은 시간</span><strong id="timer">20</strong></div>
+            </div>
+
+            <div class="target-area">
+                <span class="target-label">TARGET</span>
+                <div id="targetChar" aria-label="입력할 문자">-</div>
+            </div>
+
+            <label class="input-label" for="answerInput">여기에 입력</label>
+            <input id="answerInput" type="text" maxlength="1" autocomplete="off" autocapitalize="off" spellcheck="false" disabled>
+            <p id="feedback" class="feedback" aria-live="polite">시작 버튼을 눌러 게임을 시작하세요.</p>
+
+            <div class="actions">
+                <button id="startButton" type="button">게임 시작</button>
+                <button id="resetButton" type="button" class="secondary">초기화</button>
+            </div>
+        </section>
+    </main>
+</body>
+</html>
