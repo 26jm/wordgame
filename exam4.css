@@ -1,4 +1,5 @@
-@import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Space+Grotesk:wght@400;500;600;700&display=swap');
+@import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css');
+@import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&display=swap');
 
 :root {
     color-scheme: light;
@@ -23,7 +24,7 @@ body {
     padding: 32px 18px;
     color: var(--ink);
     background: var(--paper);
-    font-family: 'Space Grotesk', sans-serif;
+    font-family: 'Pretendard', -apple-system, sans-serif;
 }
 
 .game-shell { width: min(100%, 620px); }
@@ -40,7 +41,7 @@ h1 { margin: 0; font-size: clamp(2.25rem, 8vw, 4.5rem); line-height: 0.95; lette
 .target-label { display: block; margin-bottom: 12px; }
 #targetChar { min-height: 116px; font-family: 'DM Mono', monospace; font-size: 7rem; font-weight: 500; line-height: 1; }
 .input-label { display: block; margin-bottom: 8px; font-size: 14px; font-weight: 600; }
-#answerInput { width: 100%; height: 66px; border: 2px solid var(--ink); border-radius: 0; outline: 0; padding: 0 18px; color: var(--ink); background: #fbfcfa; font: 500 2rem 'DM Mono', monospace; text-align: center; transition: border-color .2s, color .2s; }
+#answerInput { width: 100%; height: 66px; border: 2px solid var(--ink); border-radius: 0; outline: 0; padding: 0 18px; color: var(--ink); background: #fbfcfa; font: 500 2rem 'DM Mono', monospace; }
 #answerInput:focus { border-color: var(--mint-deep); }
 #answerInput.correct { color: var(--blue); border-color: var(--blue); }
 #answerInput.incorrect { color: var(--red); border-color: var(--red); }
@@ -48,7 +49,7 @@ h1 { margin: 0; font-size: clamp(2.25rem, 8vw, 4.5rem); line-height: 0.95; lette
 .feedback.correct { color: var(--blue); }
 .feedback.incorrect { color: var(--red); }
 .actions { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
-button { min-height: 50px; border: 0; cursor: pointer; color: var(--ink); background: var(--mint); font: 600 15px 'Space Grotesk', sans-serif; }
+button { min-height: 50px; border: 0; cursor: pointer; color: var(--ink); background: var(--mint); font: 600 15px 'Pretendard', -apple-system, sans-serif; }
 button:hover { filter: brightness(.96); }
 button.secondary { color: var(--ink); background: #edf1ed; }
 button:disabled { cursor: not-allowed; opacity: .5; }
