@@ -1,17 +1,19 @@
 @import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css');
-@import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Jua&family=Gamja+Flower&family=DM+Mono:wght@500&display=swap');
 
 :root {
     color-scheme: light;
-    --ink: #172321;
-    --muted: #71807b;
-    --paper: #f4f6f1;
-    --panel: #ffffff;
-    --mint: #51ea8e;
-    --mint-deep: #087f5b;
-    --blue: #246bfe;
-    --red: #d64545;
-    --line: #dce5df;
+    /* 동물의 숲 스타일 테마 컬러 */
+    --ink: #4a3e3d;           /* 따뜻한 짙은 브라운 (문자용) */
+    --muted: #7d6e6a;         /* 부드러운 브라운 (보조 문자용) */
+    --paper: #eef7de;         /* 잔디 느낌의 연한 파스텔 연두색 배경 */
+    --panel: #fffdf5;         /* 부드러운 우유빛 패널 */
+    --ac-green: #52c876;      /* 동숲 로고 나뭇잎 초록색 */
+    --ac-yellow: #f8db60;     /* 동숲 로고 노란색 */
+    --ac-blue: #40a9ff;       /* 동숲 바다 푸른색 */
+    --ac-pink: #ff85a1;       /* 코랄 핑크 */
+    --ac-brown: #8d6e63;      /* 울타리/나무 브라운 */
+    --line: #e3dec3;          /* 베이지빛 테두리선 */
 }
 
 * { box-sizing: border-box; }
@@ -24,38 +26,220 @@ body {
     padding: 32px 18px;
     color: var(--ink);
     background: var(--paper);
-    font-family: 'Pretendard', -apple-system, sans-serif;
+    /* 은은한 에메랄드빛 바다 & 잔디 파스텔 그라데이션 */
+    background-image: radial-gradient(#cceab5 15%, transparent 16%), radial-gradient(#cceab5 15%, transparent 16%);
+    background-size: 60px 60px;
+    background-position: 0 0, 30px 30px;
+    font-family: 'Jua', 'Gamja Flower', 'Pretendard', sans-serif;
 }
 
-.game-shell { width: min(100%, 620px); }
-.game-header { margin-bottom: 24px; }
-.eyebrow, .target-label, .stats span { color: var(--muted); font-family: 'DM Mono', monospace; font-size: 12px; letter-spacing: 0; }
-.eyebrow { margin: 0 0 10px; }
-h1 { margin: 0; font-size: clamp(2.25rem, 8vw, 4.5rem); line-height: 0.95; letter-spacing: 0; }
-.description { margin: 18px 0 0; color: var(--muted); }
-.game-panel { padding: clamp(22px, 5vw, 44px); background: var(--panel); border: 1px solid var(--line); box-shadow: 12px 12px 0 var(--mint); }
-.stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; padding-bottom: 28px; border-bottom: 1px solid var(--line); }
-.stats div { display: grid; gap: 6px; }
-.stats strong { font-size: 1.45rem; }
-.target-area { padding: 42px 0 26px; text-align: center; }
-.target-label { display: block; margin-bottom: 12px; }
-#targetChar { min-height: 116px; font-family: 'DM Mono', monospace; font-size: 7rem; font-weight: 500; line-height: 1; }
-.input-label { display: block; margin-bottom: 8px; font-size: 14px; font-weight: 600; }
-#answerInput { width: 100%; height: 66px; border: 2px solid var(--ink); border-radius: 0; outline: 0; padding: 0 18px; color: var(--ink); background: #fbfcfa; font: 500 2rem 'DM Mono', monospace; }
-#answerInput:focus { border-color: var(--mint-deep); }
-#answerInput.correct { color: var(--blue); border-color: var(--blue); }
-#answerInput.incorrect { color: var(--red); border-color: var(--red); }
-.feedback { min-height: 22px; margin: 10px 0 26px; color: var(--muted); font-size: 14px; text-align: center; }
-.feedback.correct { color: var(--blue); }
-.feedback.incorrect { color: var(--red); }
-.actions { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
-button { min-height: 50px; border: 0; cursor: pointer; color: var(--ink); background: var(--mint); font: 600 15px 'Pretendard', -apple-system, sans-serif; }
-button:hover { filter: brightness(.96); }
-button.secondary { color: var(--ink); background: #edf1ed; }
-button:disabled { cursor: not-allowed; opacity: .5; }
+.game-shell { 
+    width: min(100%, 620px); 
+}
+
+.game-header { 
+    margin-bottom: 24px; 
+    text-align: center;
+}
+
+.eyebrow, .target-label, .stats span { 
+    color: var(--muted); 
+    font-size: 15px; 
+    letter-spacing: 0.5px; 
+}
+
+.eyebrow { 
+    margin: 0 0 6px; 
+    display: inline-block;
+    padding: 4px 14px;
+    background: #e2f3cd;
+    border-radius: 12px;
+}
+
+h1 { 
+    margin: 6px 0; 
+    font-size: clamp(2.25rem, 8vw, 3.8rem); 
+    line-height: 1.1; 
+    color: var(--ac-green);
+    /* 동숲 로고 느낌의 진한 브라운 텍스트 입체 테두리 및 그림자 */
+    text-shadow: 
+        -2px -2px 0 #fff,  2px -2px 0 #fff, -2px  2px 0 #fff,  2px  2px 0 #fff,
+        -3px  0px 0 var(--ink), 3px  0px 0 var(--ink), 0px -3px 0 var(--ink), 0px  3px 0 var(--ink),
+         0px  6px 0px rgba(0, 0, 0, 0.15);
+}
+
+.description { 
+    margin: 10px 0 0; 
+    color: var(--muted); 
+    font-size: 1.05rem;
+}
+
+/* 메인 게임 패널 (둥근 표지판 / 우드 보드 스타일) */
+.game-panel { 
+    padding: clamp(22px, 5vw, 40px); 
+    background: var(--panel); 
+    border: 4px solid var(--ac-brown); 
+    border-radius: 32px; 
+    /* 푹신한 입체 그림자 */
+    box-shadow: 0 10px 0 #73574c, 0 16px 20px rgba(0,0,0,0.12); 
+    position: relative;
+}
+
+/* 스탯 영역 */
+.stats { 
+    display: grid; 
+    grid-template-columns: repeat(3, 1fr); 
+    gap: 12px; 
+    padding-bottom: 20px; 
+    border-bottom: 3px dashed var(--line); 
+}
+
+.stats div { 
+    display: grid; 
+    gap: 4px; 
+    text-align: center;
+    background: #f4f0df;
+    padding: 10px;
+    border-radius: 18px;
+    border: 2px solid #e5dfc5;
+}
+
+.stats strong { 
+    font-size: 1.6rem; 
+    color: var(--ac-brown);
+}
+
+/* 목표 알파벳 제시 영역 */
+.target-area { 
+    padding: 30px 0 20px; 
+    text-align: center; 
+}
+
+.target-label { 
+    display: block; 
+    margin-bottom: 8px; 
+    font-weight: bold;
+}
+
+#targetChar { 
+    min-height: 110px; 
+    font-family: 'DM Mono', monospace; 
+    font-size: 6.5rem; 
+    font-weight: 500; 
+    line-height: 1; 
+    color: var(--ac-blue);
+    text-shadow: 3px 3px 0px #d4ebf8;
+}
+
+.input-label { 
+    display: block; 
+    margin-bottom: 8px; 
+    font-size: 16px; 
+    font-weight: 600; 
+    color: var(--ink);
+}
+
+/* 입력 창 (말풍선 스타일) */
+#answerInput { 
+    width: 100%; 
+    height: 64px; 
+    border: 3px solid var(--ac-yellow); 
+    border-radius: 24px; 
+    outline: 0; 
+    padding: 0 20px; 
+    color: var(--ink); 
+    background: #ffffff; 
+    font: 500 2.2rem 'DM Mono', monospace; 
+    text-align: center;
+    box-shadow: inset 0 4px 6px rgba(0,0,0,0.05), 0 4px 0 #e2c232;
+    transition: all 0.2s ease;
+}
+
+#answerInput:focus { 
+    border-color: var(--ac-green); 
+    box-shadow: inset 0 4px 6px rgba(0,0,0,0.05), 0 4px 0 #3aa85d;
+}
+
+#answerInput.correct { 
+    color: var(--ac-blue); 
+    border-color: var(--ac-blue); 
+    box-shadow: inset 0 4px 6px rgba(0,0,0,0.05), 0 4px 0 #2880c9;
+}
+
+#answerInput.incorrect { 
+    color: #e74c3c; 
+    border-color: #e74c3c; 
+    box-shadow: inset 0 4px 6px rgba(0,0,0,0.05), 0 4px 0 #b3392a;
+}
+
+.feedback { 
+    min-height: 24px; 
+    margin: 12px 0 24px; 
+    color: var(--muted); 
+    font-size: 16px; 
+    text-align: center; 
+    font-weight: bold;
+}
+
+.feedback.correct { color: var(--ac-blue); }
+.feedback.incorrect { color: #e74c3c; }
+
+/* 버튼 영역 (동숲 메뉴 버튼 스타일) */
+.actions { 
+    display: grid; 
+    grid-template-columns: 1fr 1fr; 
+    gap: 14px; 
+}
+
+button { 
+    min-height: 54px; 
+    border: 0; 
+    cursor: pointer; 
+    color: #ffffff; 
+    background: var(--ac-green); 
+    font: 600 18px 'Jua', 'Pretendard', sans-serif; 
+    border-radius: 25px;
+    box-shadow: 0 5px 0 #38a55b;
+    transition: transform 0.1s, box-shadow 0.1s;
+}
+
+button:hover { 
+    filter: brightness(1.05); 
+    transform: translateY(-2px);
+    box-shadow: 0 7px 0 #38a55b;
+}
+
+button:active {
+    transform: translateY(3px);
+    box-shadow: 0 2px 0 #38a55b;
+}
+
+button.secondary { 
+    color: var(--ink); 
+    background: #e1eedd; 
+    box-shadow: 0 5px 0 #b2c9ac;
+}
+
+button.secondary:hover {
+    box-shadow: 0 7px 0 #b2c9ac;
+}
+
+button.secondary:active {
+    box-shadow: 0 2px 0 #b2c9ac;
+}
+
+button:disabled { 
+    cursor: not-allowed; 
+    opacity: .5; 
+    box-shadow: none;
+    transform: none;
+}
 
 @media (max-width: 480px) {
-    .game-panel { box-shadow: 7px 7px 0 var(--mint); }
-    .stats strong { font-size: 1.2rem; }
-    #targetChar { font-size: 5.5rem; }
+    .game-panel { 
+        border-radius: 24px;
+        box-shadow: 0 6px 0 #73574c, 0 10px 15px rgba(0,0,0,0.1); 
+    }
+    .stats strong { font-size: 1.3rem; }
+    #targetChar { font-size: 5rem; }
 }
